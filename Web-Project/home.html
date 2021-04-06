@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+    <html>
+
+        <head>
+
+            <title>Home page</title>
+
+        </head>
+
+        <body id="body"> 
+
+
+            <div id="nav">
+
+
+
+                <input class="menu" id="homepage" type="button" value="Home" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)" >
+                <input class="menu" id="gallerypage" type="button" value="Gallery" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)" >
+                <input class="menu" id="aboutpage" type="button" value="About" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)" >
+                <input class="menu" id="registrationpage" type="button" value="Registration" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)"  >
+                <input class="menu" id="quizpage" type="button" value="Quiz" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)"  >
+                <input class="menu" id="gamepage" type="button" value="Game" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)" >
+
+
+
+            </div>
+
+
+
+            <div id="header">
+
+                <img id="image" style="visibility: hidden;" src="imgs/head1.jpg">
+
+            </div>
+
+            <h1 id="name"></h1>
+
+            <div id="clock">
+               
+                <img id="clockicon" src="imgs/clock.jpg">
+
+                <div id="time"></div>
+            
+            </div> 
+
+            <div id="buttons">
+
+
+                <input id="button1" type="button" value="Click me" onclick="coloring(event)" style="background-color:rgb(62, 120, 167) ;">
+
+                <input id="button2" type="button" value="Click me" onclick="coloring(event)" style="background-color: rgb(224, 193, 13) ;">
+
+                <input id="button3" type="button" value="Random" onclick="randomcolor()">
+
+            </div>
+
+
+        </body>
+
+        <script>
+
+            function hover(e)
+            {
+                
+                e.target.style.fontSize="28px"
+
+            }
+
+            function nohover(e)
+            {
+
+                e.target.style.fontSize="25px"
+
+            }
+
+
+            function navigate(e)
+            {
+
+                if (e.target.id == "homepage")
+                {
+                    window.location.href ="home.html"
+                }
+
+                if (e.target.id == "gallerypage")
+                {
+                    window.location.href ="gallery.html"
+                }
+
+                if (e.target.id == "aboutpage")
+                {
+                    window.location.href ="about.html"
+                }
+
+                if (e.target.id == "registrationpage")
+                {
+                    window.location.href ="registration.html"
+                }
+
+                if (e.target.id == "quizpage")
+                {
+                    window.location.href ="quiz.html"
+                }
+
+                if (e.target.id == "gamepage")
+                {
+                    window.location.href ="game.html"
+                }
+               
+
+            }
+
+
+            var images = []
+
+            images.push("imgs/head1.jpg")
+
+            images.push("imgs/head2.jpg")
+
+            images.push("imgs/head3.jpg")
+
+            images.push("imgs/head4.jpg")
+
+            images.push("imgs/head5.jpg")  
+
+
+            var i =0
+
+            var x = document.getElementById("image")
+
+            setInterval(clock,1000)
+
+            change()
+                  
+            var welcome = prompt("What's your name?")
+            document.getElementById("name").innerHTML="Welcome " + welcome + " in my website"
+
+
+            if(welcome == null || welcome == "")
+            {
+                welcome = "Guest"
+            }
+            
+
+            var today = new Date();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+            
+
+            if (today.getHours()>=12 && today.getMinutes()>=0 && today.getSeconds()>=0)
+            {
+                document.getElementById("name").innerHTML="Good afternoon " + welcome
+            }
+
+            else
+            {
+                document.getElementById("name").innerHTML="Good morning " + welcome
+            }
+
+
+            function clock()
+            {
+                var today = new Date();
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                document.getElementById("time").innerHTML=time
+            }
+
+
+            function coloring(e)
+            {
+
+               var body = document.getElementById("body")
+               body.style.backgroundColor = (e.target.style.backgroundColor)
+               
+            }
+            
+
+            function randomcolor()
+            {
+                
+                var red = Math.random()*255
+                var green = Math.random()*255
+                var blue = Math.random()*255
+                var body = document.getElementById("body")
+                body.style.backgroundColor="rgb("+red+","+green+","+blue+")"
+
+            }
+
+            
+
+            function change()
+            {
+                           
+                
+                x.style.visibility ="visible"
+                x.style.width="100%"
+                x.style.height="300px"
+                x.style.borderRadius = "20px"
+                x.style.border = "5px solid black"
+                x.style.boxSizing="border-box"
+                x.src =images[i]
+                i++
+
+                if (i==5)
+                {
+                    i=0
+                }
+                
+                setTimeout(change,3000);
+                
+            }
+                       
+        </script>
+
+        <style>
+
+            #nav {width: 70%; margin: 5px;margin-left: auto;margin-right: auto;background-color:  #333; border: 3px solid black; border-radius: 15px; height: 65px;display: flex; justify-content: space-around;align-items: center;}
+            .menu {font-size: 25px;height: 50px; border-radius: 10px;border: 4px solid black;background-color: rgb(62, 120, 167);font-family: cursive;display: flex; align-items: center;}
+
+
+
+            #name {text-align: center;}
+
+
+            #clock {width: 130px;margin-left: auto; margin-right: auto;display: flex;  justify-content: space-around;align-items: center;}
+            #clockicon {width: 30px; height: 30px;margin-bottom: 0px;}
+            #time {border: 2px solid black;border-radius: 15px; width: 80px;height: 27px;text-align: center;}
+
+
+            #body {font-family: cursive;background-color: rgb(139, 139, 139);}
+
+            #buttons {border: 3px solid black;border-radius: 25px;background-color: #333; height: 70px;width: 40%;  display: flex; align-items: center;justify-content: space-around;margin-left: auto; margin-right: auto; margin-top: 25px;}
+            #button1 { font-size: 30px; border-radius: 10px;border: 4px solid black;font-family: cursive}
+            #button2 { font-size: 30px; border-radius: 10px; border: 4px solid black;font-family: cursive}
+            #button3 { font-size: 30px; border-radius: 10px; border: 4px solid black;font-family: cursive; background:url("imgs/colors.jpg")}
+
+            
+        </style>
+
+    </html>
