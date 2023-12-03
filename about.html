@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>About</title>
+        </head>
+
+        <body>
+
+
+            <div id="nav">
+
+
+
+                <input class="menu" id="homepage" type="button" value="Home" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)" >
+                <input class="menu" id="gallerypage" type="button" value="Gallery" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)" >
+                <input class="menu" id="aboutpage" type="button" value="About" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)" >
+                <input class="menu" id="registrationpage" type="button" value="Registration" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)"  >
+                <input class="menu" id="quizpage" type="button" value="Quiz" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)"  >
+                <input class="menu" id="gamepage" type="button" value="Game" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)" >
+
+
+
+            </div>
+
+            <div id="about">
+
+                    <div>
+                        <img id="me" src="imgs/mypic.jpg">
+                    </div>
+
+                    <div>
+
+                        <div>
+                            <h1>Mazen Hesham Ibrahim</h1>
+                        </div>
+
+
+                        <div>
+                            <h1>Track: GIS</h1>
+                        </div>
+                        
+
+                        <div>
+                            <h3>Faculty Of Science</h3>
+                            <h3>Geophysics Department</h3>
+                            <h3>Alexandria Univercity</h3>
+                        </div>
+
+                        
+
+                        <div>
+                            <div>Contact me</div>
+                            <div><img id="fb" class="contact" src="imgs/Facebookicon.jpg" onclick="go(event)" onmouseover="hover2(event)" onmouseout="nohover2(event)"> <img id="inst" class="contact" src="imgs/InstagramIcon.jpg" onclick="go(event)" onmouseover="hover2(event)" onmouseout="nohover2(event)" ></div>
+                        </div>
+
+                    </div>
+
+            </div>
+
+
+        </body>
+
+        <script>
+
+            function hover(e)
+            {
+                
+                e.target.style.fontSize="28px"
+
+            }
+
+            function nohover(e)
+            {
+
+                e.target.style.fontSize="25px"
+
+            }
+
+
+            function navigate(e)
+            {
+
+                if (e.target.id == "homepage")
+                {
+                    window.location.href ="home.html"
+                }
+
+                if (e.target.id == "gallerypage")
+                {
+                    window.location.href ="gallery.html"
+                }
+
+                if (e.target.id == "aboutpage")
+                {
+                    window.location.href ="about.html"
+                }
+
+                if (e.target.id == "registrationpage")
+                {
+                    window.location.href ="registration.html"
+                }
+
+                if (e.target.id == "quizpage")
+                {
+                    window.location.href ="quiz.html"
+                }
+
+                if (e.target.id == "gamepage")
+                {
+                    window.location.href ="game.html"
+                }
+               
+
+            }
+
+            function go(e)
+            {
+                if (e.target.id == "fb")
+                {
+                    window.location.replace("https://www.facebook.com/profile.php?id=100002520430679")
+                }
+
+                if (e.target.id == "inst")
+                {
+                    window.location.replace("https://www.instagram.com/mazen_hesham2/")
+                }
+               
+            }
+
+            
+            function hover2(e)
+            {
+
+                e.target.style.border="4px solid #333"
+                e.target.style.borderRadius="10px"
+              
+
+            }
+
+
+            function nohover2(e)
+            {
+
+                e.target.style.border="0px"
+                //e.target.style.height="50px"
+
+            }
+
+
+        </script>
+
+        <style>
+
+            #nav {width: 70%; margin: 5px;margin-left: auto;margin-right: auto;background-color:  #333; border: 3px solid black; border-radius: 15px; height: 65px;display: flex; justify-content: space-around;align-items: center;}
+            .menu {font-size: 25px;height: 50px; border-radius: 10px;border: 4px solid black;background-color: rgb(62, 120, 167);font-family: cursive;display: flex; align-items: center;}
+
+
+
+            body {background-color: rgb(139, 139, 139) ;font-family: cursive;}
+
+            #about {display: flex; justify-content: space-around; align-items: center; flex-direction:row; text-align: center;flex-wrap: wrap;width:1200px;height: 600px;   border: 3px solid black;border-radius: 25px;background-color:rgb(62, 120, 167); margin-right: auto; margin-left: auto;}
+
+            .contact {width: 50px; height: 50px;margin: 20px;box-sizing: border-box;}
+
+            #me {width: 450px;height: 550px; border:3px solid black;border-radius: 25px ;}
+
+
+        </style>
+
+    </html>
