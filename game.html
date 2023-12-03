@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Game</title>
+        
+    </head>
+    <body onload="init()" onkeypress="mymove(event)">
+
+
+        <div id="nav">
+
+
+
+            <input class="menu" id="homepage" type="button" value="Home" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)" >
+            <input class="menu" id="gallerypage" type="button" value="Gallery" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)" >
+            <input class="menu" id="aboutpage" type="button" value="About" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)" >
+            <input class="menu" id="registrationpage" type="button" value="Registration" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)"  >
+            <input class="menu" id="quizpage" type="button" value="Quiz" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)"  >
+            <input class="menu" id="gamepage" type="button" value="Game" onclick="navigate(event)" onmouseover="hover(event)" onmouseout="nohover(event)" >
+
+
+
+        </div>
+
+        
+        <img id="basket" src="imgs/basket.png">
+        <img id="stadium" src="imgs/stadium2.jpg">
+        <img id="ball" src="imgs/ball.png">
+        <div id="score"> <span >Your score is:  </span><span id="score_num"></span></div>
+        <div id="level"> <span>Level:</span> <span id="level_num"></span></div>
+        <div id="timer"> <span>Timer:</span><span id="timer_num"></span></div>
+    </body>
+    <script>
+
+
+function hover(e)
+            {
+                
+                e.target.style.fontSize="23px"
+
+            }
+
+            function nohover(e)
+            {
+
+                e.target.style.fontSize="20px"
+
+            }
+
+
+            function navigate(e)
+            {
+
+                if (e.target.id == "homepage")
+                {
+                    window.location.href ="home.html"
+                }
+
+                if (e.target.id == "gallerypage")
+                {
+                    window.location.href ="gallery.html"
+                }
+
+                if (e.target.id == "aboutpage")
+                {
+                    window.location.href ="about.html"
+                }
+
+                if (e.target.id == "registrationpage")
+                {
+                    window.location.href ="registration.html"
+                }
+
+                if (e.target.id == "quizpage")
+                {
+                    window.location.href ="quiz.html"
+                }
+
+                if (e.target.id == "gamepage")
+                {
+                    window.location.href ="game.html"
+                }
+               
+
+            }
+        var ball;
+        var basket;
+        var score;
+        var level;
+        var timer;
+        var i=1
+        var l=1
+        var t=60
+
+        ball = document.getElementById("ball")
+        basket = document.getElementById("basket")
+        score = document.getElementById("score_num")
+
+
+
+        function init()
+        {
+            ball.style.top="0px"
+            basket.style.left = "600px"
+            basket.style.top = "520px"
+            
+          
+           alert("Put the ball EXACTLY in the basket!")
+           ball.style.left = parseInt(Math.random()*innerWidth-100)+"px"
+           
+           setInterval(ballmove,60)
+           setInterval(timer,1000)
+           level= document.getElementById("level_num").innerHTML=1
+          
+           console.log(parseInt(ball.style.top))
+
+        }
+
+
+        function timer()
+        {
+            timer= document.getElementById("timer_num").innerHTML=t 
+            t--
+
+            if (t == 0)
+            {
+                alert("Game over!")
+                score= document.getElementById("timer_num").innerHTML=0
+                location.reload()
+            }
+
+        }
+
+        
+        
+        function ballmove()
+        {   
+            ball.style.top = parseInt(ball.style.top)+10+"px"
+
+            if(parseInt(ball.style.top)>= parseInt(innerHeight))
+           {       
+               ball.style.top="0px"
+               ball.style.left = parseInt(Math.random()*innerWidth-100)+"px"           
+           }
+            if( parseInt (ball.style.top)>parseInt(basket.style.top)&& parseInt (ball.style.top)<parseInt(basket.style.top)+100
+            &&parseInt (ball.style.left)>parseInt(basket.style.left)&& parseInt (ball.style.left)<parseInt(basket.style.left)+40
+            )
+            {
+               
+                ball.style.top="0px"
+                ball.style.left = parseInt(Math.random()*innerWidth-100)+"px"
+                score= document.getElementById("score_num").innerHTML=i
+                
+                i+=1
+            }
+            if(score>=4 && score <=8 )
+            {
+                level= document.getElementById("level_num").innerHTML=2
+                ball.style.top = parseInt(ball.style.top)+20+"px"
+            }
+            if(score>=8 && score <=12 )
+            {
+                level= document.getElementById("level_num").innerHTML=3
+                ball.style.top = parseInt(ball.style.top)+25+"px"
+            }
+            if (score == 12)
+            {
+                alert("WINNER!")
+                score= document.getElementById("score_num").innerHTML=0
+                location.reload()
+            }
+
+        }
+
+
+        
+        function mymove(e)
+        {   
+                  
+            if (e.keyCode==100||e.keyCode==1610)
+            {
+                       
+                basket.style.left=parseInt(basket.style.left)+30+"px";
+            }
+            else if (e.keyCode==115||e.keyCode==1587)
+                    {basket.style.top=parseInt(basket.style.top)+15+"px"; }
+                   
+                else if (e.keyCode==119||e.keyCode==1589)
+                        {basket.style.top=parseInt(basket.style.top)-15+"px"; }
+
+                    else if (e.keyCode==97||e.keyCode==1588)
+                    {
+                                
+                        basket.style.left=parseInt(basket.style.left)-30+"px";
+                    }
+
+        }
+
+        
+
+    </script>
+
+    <style>
+
+        #nav {width: 40%; margin: 5px;background-color:  #333; border: 3px solid black; border-radius: 15px; height: 65px;display: flex; justify-content: space-around;align-items: center;position: absolute ;z-index: 2;margin-left: auto; margin-right: auto; margin-left: 400px;}
+        
+        .menu {font-size: 20px;height: 50px; border-radius: 10px;border: 4px solid black;background-color: rgb(62, 120, 167);font-family: cursive;display: flex; align-items: center;}
+
+        img {position: absolute;}
+
+        #stadium {width: 100%; height: 100%;}
+
+        #basket {width: 120px;height: 120px;z-index: 2;}
+
+        #ball {width: 80px; height: 80px;z-index: 1;}
+
+        #score {z-index: 3;font-size: 40px; position: absolute; background-color: rgba(189, 73, 7, 0.8);border-radius:20px;border: 3px solid black;}
+
+        #level {z-index: 3;font-size: 40px; position: absolute; background-color: rgba(189, 73, 7, 0.8);border-radius:20px;border: 3px solid black;top: 55px;}
+
+        #timer {z-index: 3;font-size: 40px; position: relative; background-color: rgba(189, 73, 7, 0.8);border-radius:20px;border: 3px solid black;float: right;}
+
+        body {margin: auto; padding: 0px;overflow: hidden;}
+
+    </style>
+
+</html>
